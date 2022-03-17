@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="./self_build_promise.js"></script>
+
+<body>
+    <script>
+        // let p = new Promise((resolve, reject) => {
+        //     // resolve('OK');
+        //     // reject('error');
+        //     // throw "error"
+        //     setTimeout(() => {
+        //         reject('OK');
+        //     }, 1000);
+        // });
+
+        // console.log(p);
+
+        // const res = p.then(value => {
+        //     console.log(value);
+        //     // throw 'fail';
+        // }, reason => {
+        //     console.warn(reason);
+        // })
+
+        // p.reason=>{
+        //     alert(reason);
+        // })
+
+        // console.log(res);
+
+        // p.then(value=>{
+        //     console.log('111');
+        // }).catch(reason=>{
+        //     console.warn(reason);
+        // })
+
+        // const p = Promise.reject('ok');
+        // console.log(p);
+
+        // let p1= new Promise((resolve, reject)=>{
+        //     setTimeout(()=>{
+        //         resolve('ok');
+        //     },0);    
+        // });
+        // let p2=Promise.resolve('success');
+        // let p3= Promise.resolve('haha');
+        // // let result = Promise.all([p1,p2,p3]);
+        // let result = Promise.race([p1,p2,p3]);
+        // console.log(result);
+
+
+        let p1= new Promise((resolve, reject)=>{
+           resolve('ok');
+           console.log(111);
+        });
+        p1.then((value)=>{
+            console.log(222);
+        });
+
+        console.log(333);
+    </script>
+</body>
+
+</html>

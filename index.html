@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <!-- <script src='main.js'>
+        
+    </script> -->
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            console.log(btn);
+            btn.innerHTML = "change btn"
+            // btn.onclick = clickBtn;
+            btn.ondblclick = clickDbBtn;
+            function clickBtn() {
+                alert('click btn');
+            }
+            function clickDbBtn() {
+                alert('double click btn');
+            }
+
+            console.log(document.getElementsByTagName('button'))
+
+            let checkAllBox = document.getElementById('checkAllBox');
+            let checkAllBtn = document.getElementById('checkAllBtn');
+            checkAllBtn.onclick = function () {
+                let items = document.getElementsByName('items');
+                for (let i = 0; i < items.length; i++) {
+                    items[i].checked = true;
+                }
+                checkAllBox.checked = true;
+            }
+
+            let checkNoBtn = document.getElementById('checkNoBtn');
+            checkNoBtn.onclick = function () {
+                let items = document.getElementsByName('items');
+                for (let i = 0; i < items.length; i++) {
+                    items[i].checked = false;
+                }
+                checkAllBox.checked = false;
+            }
+
+            let checkRevBtn = document.getElementById('checkRevBtn');
+            checkRevBtn.onclick = function () {
+                checkAllBox.checked = true;
+                let items = document.getElementsByName('items');
+                for (let i = 0; i < items.length; i++) {
+                    items[i].checked = !items[i].checked;
+                    if (!items[i].checked) {
+                        checkAllBox.checked = false;
+                    }
+                }
+            }
+
+            let sendBtn = document.getElementById('sendBtn');
+            sendBtn.onclick = function () {
+                let items = document.getElementsByName('items');
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i].checked) {
+                        alert(items[i].value);
+                    }
+                }
+            }
+
+            checkAllBox.onclick = function () {
+                let items = document.getElementsByName('items');
+                for (let i = 0; i < items.length; i++) {
+                    items[i].checked = this.checked;
+                }
+            }
+
+            let items = document.getElementsByName('items');
+            let flag = true;
+            for (let i = 0; i < items.length; i++) {
+                items[i].onclick = function () {
+                    checkAllBox.checked = true;
+                    for (let j = 0; j < items.length; j++) {
+                        if (!items[j].checked) {
+                            checkAllBox.checked = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            var div = document.querySelector(".box1 div");
+            console.log(div.innerHTML);
+            var div1 = document.querySelectorAll(".box1 div");
+            console.log(div1.length);
+
+            var allA = document.getElementsByTagName('a');
+            for (let i = 0; i < allA.length; i++) {
+                allA[i].onclick = function () {
+                    let tr = this.parentNode.parentNode;
+                    var flag = confirm("确认删除" + tr.getElementsByTagName("td")[0].innerHTML + "吗？");
+                    if (flag) {
+                        tr.parentNode.removeChild(tr);
+                    }
+                    return false;
+                }
+            }
+
+            let submitBtn = document.getElementById("addEmpButton");
+            submitBtn.onclick = function () {
+                let name = document.getElementById("empName").value;
+                let email = document.getElementById("email").value;
+                let salary = document.getElementById("salary").value;
+
+                var tr = document.createElement("tr");
+                tr.innerHTML = "<td>" + name + "</td>" +
+                    "<td>" + email + "</td>" +
+                    "<td>" + salary + "</td>" +
+                    "<td><a href='javascript:;'>Delete</a></td>";
+                // var nameTd = document.createElement("td");
+                // var emailTd = document.createElement("td");
+                // var salaryTd = document.createElement("td");
+                // var aTd = document.createElement("td");
+
+                // var a = document.createElement("a");
+
+                // var nameText = document.createTextNode(name);
+                // var emailText = document.createTextNode(email);
+                // var salaryText = document.createTextNode(salary);
+                // var delText = document.createTextNode("Delete");
+
+                // nameTd.appendChild(nameText);
+                // emailTd.appendChild(emailText);
+                // salaryTd.appendChild(salaryText);
+
+                // a.appendChild(delText);
+                // aTd.appendChild(a);
+
+                // tr.appendChild(nameTd);
+                // tr.appendChild(emailTd);
+                // tr.appendChild(salaryTd);
+                // tr.appendChild(aTd);
+                // a.href = "javascript:;"
+                var a = tr.getElementsByTagName("a")[0];
+                a.onclick = function () {
+                    let tr = this.parentNode.parentNode;
+                    var flag = confirm("确认删除" + tr.getElementsByTagName("td")[0].innerHTML + "吗？");
+                    if (flag) {
+                        tr.parentNode.removeChild(tr);
+                    }
+                    return false;
+                }
+                let table = document.getElementById("employeeTable");
+                var tbody = table.getElementsByTagName("tbody")[0];
+                tbody.appendChild(tr);
+
+               
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="btn">Button</button>
+    <button id="btn1">Button1</button>
+
+    <form method="POST" action="">
+        你爱好的运动是？<input type="checkbox" id="checkAllBox" />全选/全不选
+        <br>
+        <input type="checkbox" name="items" value="足球" />足球
+        <input type="checkbox" name="items" value="篮球" />篮球
+        <input type="checkbox" name="items" value="羽毛球" />羽毛球
+        <input type="checkbox" name="items" value="乒乓球" />乒乓球
+
+        <br>
+        <input type="button" id="checkAllBtn" value="全选" />
+        <input type="button" id="checkNoBtn" value="全不选" />
+        <input type="button" id="checkRevBtn" value="反选" />
+        <input type="button" id="sendBtn" value="提交" />
+    </form>
+
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+
+    <table id="employeeTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@qq.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@qq.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@qq.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+    </table>
+
+    <div id="formDiv">
+        <h4>添加新员工</h4>
+        <table>
+            <tr>
+                <td class="word">name:</td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email:</td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary:</td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"></td>
+                <button id="addEmpButton" value="abc">
+                    Submit
+                </button>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

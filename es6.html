@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <style type="text/css">
+        .item {
+            border: blue;
+            width: 200px;
+            height: 200px;
+            margin-left: 20px;
+            border-style: double;
+        }
+
+        .container {
+            display: flex;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            // let aa=1;
+            // let items = document.getElementsByClassName('item');
+            // for (let i = 0; i < items.length; i++) {
+            //     items[i].onclick = function () {
+            //         this.style.background = 'pink';
+            //     }
+            // }
+
+            // const a = [1, 2, 3];
+            // let [index1, index2, index3, index4] = a;
+            // console.log(index1, index2, index3, index4);
+
+            // const b = {
+            //     name: 'test', age: 10, setName: function () {
+            //         this.name = name;
+            //     }
+            // };
+
+            // // let {name, age, setName} = b;
+            // // console.log(name,age,setName);
+
+            // let { setName } = b;
+            // console.log(setName);
+
+            // let name = 'name1';
+            // let change = function () {
+            //     console.log('change!');
+            // }
+
+            // const school = {
+            //     name,
+            //     change
+            // };
+
+            // console.log(school);
+
+            // const spread = ['test1', 'test2'];
+            // function chunwan() {
+            //     console.log(arguments);
+            // }
+            // chunwan(...spread);
+
+            // let s = Symbol();
+            // console.log(s, typeof s);  // Symbol() 'symbol'
+            // let s2 = Symbol('test');
+            // let s3 = Symbol('test');
+            // console.log(s2 === s3);  // false
+
+            // let s4 = Symbol.for('test');
+            // let s5 = Symbol.for('test');
+            // console.log(s4 === s5); //true
+
+
+            // const banji = {
+            //     name: '1 class',
+            //     stus: ['a', 'b', 'c'],
+            //     [Symbol.iterator]() {
+            //         let index = 0;
+            //         return {
+            //             next: () => {
+            //                 if (index < this.stus.length) {
+            //                     const result = { value: this.stus[index], done: false };
+            //                     index++;
+            //                     return result;
+            //                 } else {
+            //                     return { value: undefined, done: true }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+
+            // for (let v of banji.stus) {
+            //     console.log(v);
+            // }
+            // 生成器函数实例1
+            // function one() {
+            //     setTimeout(() => {
+            //         console.log(111);
+            //         iterator.next();
+            //     }, 1000)
+            // }
+            // function two() {
+            //     setTimeout(() => {
+            //         console.log(222);
+            //         iterator.next();
+            //     }, 2000)
+            // }
+            // function three() {
+            //     setTimeout(() => {
+            //         console.log(333);
+            //         iterator.next();
+            //     }, 3000)
+            // }
+            // function *gen(){
+            //    yield one();
+            //    yield two();
+            //    yield three(); 
+            // }
+            // let iterator = gen();
+            // iterator.next();
+
+             // Promise
+             const p = new Promise(function(resolve, reject){
+                 setTimeout(function(){
+                    // let data = "success";
+                    // resolve(data);  
+                    reject('failed');
+                 },1000)
+             })
+
+             p.then(function(value){
+                 console.log(value);
+             }, function (reason){
+                 console.error(reason)
+             })
+
+             // Set
+             let s1= new Set();
+             let s2= new Set([1,2,3,1]);
+             console.log(s2, typeof(s2), s2.size, s2.add(5),s2.delete(1));
+             for(let v of s2){
+                 console.log(v);
+             }
+             s2.clear();
+             console.log(s2)
+
+             // Number.EPSILON
+             function equals(a,b){
+                 if(Math.abs(a-b)<Number.EPSILON){
+                     return true;
+                 }else{
+                     return false;
+                 }
+             }
+             console.log(0.1+0.2===0.3);
+             console.log(equals(0.1+0.2,0.3));
+
+
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+
+</body>
+
+</html>
